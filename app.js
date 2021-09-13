@@ -1,8 +1,14 @@
 var btnTranslate = document.querySelector("#btn-translate");
 var txtInput = document.querySelector("#txt-input");
+var output = document.querySelector("#output");
 
-console.log("txtinput")
-btnTranslate.addEventListener("click", function clickEventHandler() {
-     console.log("Clicked!")
-})
+function clickHandler() {
+
+     output = "agfsa " + txtInput.value;
+};
+
+
+
+btnTranslate.addEventListener("click",  clickHandler)
+
 
