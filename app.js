@@ -2,16 +2,27 @@ const btnTranslate = document.querySelector("#btn-translate");
 const txtInput = document.querySelector("#txt-input");
 const output = document.querySelector("#output");
 
-const serverURL = "https://api.funtranslations.com/translate/minion.json" + "?text=Hello sonam";
+const serverURL = "https://api.funtranslations.com/translate/minion.json";
+
+function getTranslationURL(text) {
+
+     return serverURL + "?" + "text=" + text
+
+}
 
 function clickHandler() {
 
-     output.innerText = "hiiii"
+     var inputText = txtInput.value;
 
-
-     fetch(serverURL)
+     fetch(getTranslationURL(inputText))
           .then(response => response.json())
-          .then(data => output.innerText = data.contents.translated)
-}
+          .then(json => {
 
-btnTranslate.addEventListener("click", clickHandler);
+               var translatedText = json.contents.translated;
+               output.innerText = translatedText;
+               console.log(json.contents.translated)
+          })
+
+};
+
+btnTranslate.addEventListener("click", clickHandler)
